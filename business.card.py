@@ -1,4 +1,4 @@
-from ast import Return
+from ast import Return, Try
 from string import capwords
 from faker import Faker
 import random
@@ -20,11 +20,11 @@ class BaseContact:
 
     @property
     def contact(self):
-        return print(f"I dial the number: {self.phone_number} and contacted: {self.name}")
+        return f"I dial the number: {self.phone_number} and contacted: {self.name}"
 
     @property
     def lenght_count(self):
-        return print(len(self.name)+1)
+        return len(self.name)+1
 
 class BusinessContact(BaseContact):
     def __init__(self, company, job, company_phone, *args, **kwargs):
@@ -42,7 +42,7 @@ class BusinessContact(BaseContact):
 def create_contacts(card_type, quantity):
 
     quantity = int(quantity)
-    
+
     contacts =[]
     print('Today Date: {}\n'.format(today.strftime("%d/%m/%Y")))
     if card_type == "P":
@@ -57,9 +57,12 @@ def create_contacts(card_type, quantity):
             contacts.append(contact)
     for n in contacts:
         print(n)
-    Return
 
-card_type = input("Which card would you like to choose: Business [B] or Personal [P]? ")    
-quantity = input("How many cards you want? " )
-create_contacts(card_type, quantity)
+while Try:
+    card_type = input("Which card would you like to choose: Business [B] or Personal [P]? ")    
+    quantity = input("How many cards you want? " )
+    create_contacts(card_type, quantity)
+    
+
+
     
